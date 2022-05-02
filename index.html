@@ -23,9 +23,18 @@
 			<pre>matthew ward thesis defense presentation</pre>
 		</div>
 
-        <video id="video" loop crossOrigin="anonymous" playsinline="true" style="display:none" muted="true">
+        <video id="video1" loop crossOrigin="anonymous" playsinline="true" style="display:none" muted="true">
             <source src="videos/App-Demo.m4v">
         </video>
+		<video id="video2" loop crossOrigin="anonymous" playsinline="true" style="display:none" muted="true">
+			<source src="videos/Sunnyside-500M-Buffer.m4v">
+		</video>
+		<video id="video3" loop crossOrigin="anonymous" playsinline="true" style="display:none" muted="true">
+			<source src="videos/Video3.m4v">
+		</video>
+		<video id="video4" loop crossOrigin="anonymous" playsinline="true" style="display:none" muted="true">
+			<source src="videos/Video4.m4v">
+		</video>
 
 		<!-- Import maps polyfill -->
 		<!-- Remove this when import maps will be widely supported -->
@@ -49,7 +58,13 @@
 
 			import { MapControls } from 'map-controls';
 
-			let camera, controls, scene, renderer, video;
+			let camera, controls, scene, renderer, video1, video2, video3, video4;
+
+			var videos = [];
+			var videoGroup = new THREE.Group();
+
+			const pointer = new THREE.Vector2();
+			const raycaster = new THREE.Raycaster();
 
 			init();
 			//render(); // remove when using next line for animation loop (requestAnimationFrame)
@@ -86,13 +101,22 @@
 				controls.maxPolarAngle = Math.PI / 2;
 
                 // video testing
-                video = document.getElementById( 'video' );
-                video.play();
+                video1 = document.getElementById( 'video1' );
+				video2 = document.getElementById( 'video2' );
+				video3 = document.getElementById( 'video3' );
+				video4 = document.getElementById( 'video4' );
+                // video1.play();
+				// video2.play();
+				// video3.play();
+				// video4.play();
                 // window.addEventListener( 'onload', function() {
                 //     video.play();
                 // });
 
-                var videoTexture = new THREE.VideoTexture( video );
+                var video1Texture = new THREE.VideoTexture( video1 );
+				var video2Texture = new THREE.VideoTexture( video2 );
+				var video3Texture = new THREE.VideoTexture( video3 );
+				var video4Texture = new THREE.VideoTexture( video4 );
 
 				// world
 
@@ -101,14 +125,14 @@
 				const cyan = new THREE.MeshPhongMaterial( { color: 0x00feef, flatShading: true } );
                 const magenta = new THREE.MeshPhongMaterial( { color: 0xff10f0, flatShading: true } );
 
-				for ( let i = 0; i < 500; i ++ ) {
+				for ( let i = 0; i < 400; i ++ ) {
                     if (i % 5 == 0) {
                         var mesh = new THREE.Mesh( geometry, magenta );
                     } else {
                         var mesh = new THREE.Mesh( geometry, cyan );
                     }
 					mesh.position.x = Math.random() * 1600 - 800;
-					mesh.position.y = Math.random() * 20;
+					mesh.position.y = Math.random() * 15;
 					mesh.position.z = Math.random() * 1600 - 800;
 					mesh.scale.x = 20;
 					// mesh.scale.y = Math.random() * 80 + 10;
@@ -156,11 +180,11 @@
                 scene.add(agendaEdge);
                 
                 // slides 1-4
-                var texture = new THREE.VideoTexture( video );
+                // var texture = new THREE.VideoTexture( video );
                 // 1
                 var slide1Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
                 // const slide1Map = new THREE.TextureLoader().load( '' );
-                var slide1Background = new THREE.MeshBasicMaterial( { map: videoTexture } );
+                var slide1Background = new THREE.MeshBasicMaterial( { color: 0xffffff } );
                 var slide1 = new THREE.Mesh( slide, slide1Background );
                 slide1.position.set( -500, 50, 180 );
                 slide1Edge.position.set( -500, 50, 180 );
@@ -187,6 +211,77 @@
                 var slide4Background = new THREE.MeshBasicMaterial( { color: 0xffffff } );
                 var slide4 = new THREE.Mesh( slide, slide4Background );
 
+				// videos
+
+				const viewer = new THREE.PlaneGeometry( 50, 108.5 );
+				const viewerEdges = new THREE.EdgesGeometry( viewer );
+
+				// video 1
+
+				const video1Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
+                const video1Video = new THREE.MeshBasicMaterial( {map: video1Texture, color: 0xffffff } );
+                const Video1 = new THREE.Mesh( viewer, video1Video );
+                Video1.rotateY(90*(Math.PI/180));
+                video1Edge.rotateY(90*(Math.PI/180));
+                Video1.rotateX(-45*(Math.PI/180));
+                video1Edge.rotateX(-45*(Math.PI/180));
+                Video1.position.set( 600, 50, -50 );
+                video1Edge.position.set( 600, 50, -50 );
+				videoGroup.add(Video1);
+                // scene.add(Video1);
+                scene.add(video1Edge);
+
+				// video 2
+
+				const video2Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
+                const video2Video = new THREE.MeshBasicMaterial( {map: video2Texture, color: 0xffffff } );
+                const Video2 = new THREE.Mesh( viewer, video2Video );
+                Video2.rotateY(90*(Math.PI/180));
+                video2Edge.rotateY(90*(Math.PI/180));
+                Video2.rotateX(-45*(Math.PI/180));
+                video2Edge.rotateX(-45*(Math.PI/180));
+                Video2.position.set( 600, 50, -120 );
+                video2Edge.position.set( 600, 50, -120 );
+				videoGroup.add(Video2);
+                // scene.add(Video2);
+                scene.add(video2Edge);
+
+				// video 3
+
+				const video3Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
+                const video3Video = new THREE.MeshBasicMaterial( {map: video3Texture, color: 0xffffff } );
+                const Video3 = new THREE.Mesh( viewer, video3Video );
+                Video3.rotateY(90*(Math.PI/180));
+                video3Edge.rotateY(90*(Math.PI/180));
+                Video3.rotateX(-45*(Math.PI/180));
+                video3Edge.rotateX(-45*(Math.PI/180));
+                Video3.position.set( 600, 50, -190 );
+                video3Edge.position.set( 600, 50, -190 );
+				videoGroup.add(Video3);
+                // scene.add(Video3);
+                scene.add(video3Edge);
+
+				// video 4
+
+				const video4Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
+                const video4Video = new THREE.MeshBasicMaterial( {map: video4Texture, color: 0xffffff } );
+                const Video4 = new THREE.Mesh( viewer, video4Video );
+				Video4.name = "video4";
+				console.log(Video4.name);
+                Video4.rotateY(90*(Math.PI/180));
+                video4Edge.rotateY(90*(Math.PI/180));
+                Video4.rotateX(-45*(Math.PI/180));
+                video4Edge.rotateX(-45*(Math.PI/180));
+                Video4.position.set( 600, 50, -260 );
+                video4Edge.position.set( 600, 50, -260 );
+				videoGroup.add(Video4);
+                // scene.add(Video4);
+                scene.add(video4Edge);
+
+				scene.add( videoGroup );
+				videos.push( videoGroup );
+				
+				
 				// lights
 
 				const dirLight1 = new THREE.DirectionalLight( 0xffffff );
@@ -202,13 +297,29 @@
 				scene.add( ambientLight );
 
 				//
-
+				document.addEventListener( 'mousedown', toggleVideo, false );
 				window.addEventListener( 'resize', onWindowResize );
 
 
 				const gui = new GUI();
 				gui.add( controls, 'screenSpacePanning' );
 
+			}
+
+			function toggleVideo( event ) {
+				var videoName = '';
+				pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+                pointer.y = -( event.clientY / window.innerHeight ) * 2 + 1;
+
+				raycaster.setFromCamera( pointer, camera );
+                var intersects = raycaster.intersectObjects( videos );
+				console.log(pointer.x, pointer.y);
+				// console.log(videos);
+				for(let i = 0; i < intersects.length; i++) {
+					// console.log(intersects[i].object.name);
+					videoName = intersects[i].object.name;
+					video4.play();
+				}
 			}
 
 			function onWindowResize() {
