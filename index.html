@@ -24,7 +24,7 @@
 		</div>
 
         <video id="video" loop crossOrigin="anonymous" playsinline="true" style="display:none" muted="true">
-            <source src="/videos/App-Demo.m4v">
+            <source src="videos/App-Demo.m4v">
         </video>
 
 		<!-- Import maps polyfill -->
@@ -128,7 +128,7 @@
                 // title slide
 
                 const titleEdge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
-                const titleMap = new THREE.TextureLoader().load( '/images/slide-maps/title.png' );
+                const titleMap = new THREE.TextureLoader().load( 'images/slide-maps/title.png' );
                 const slide1Text = new THREE.MeshBasicMaterial( {map: titleMap, color: 0xffffff } );
                 const titleSlide = new THREE.Mesh( slide, slide1Text );
                 titleSlide.rotateY(90*(Math.PI/180));
@@ -143,7 +143,7 @@
                 // agenda slide
 
                 const agendaEdge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
-                const agendaMap = new THREE.TextureLoader().load( '/images/slide-maps/agenda.png' );
+                const agendaMap = new THREE.TextureLoader().load( 'images/slide-maps/agenda.png' );
                 var blankSlideBackground = new THREE.MeshBasicMaterial( {map: agendaMap, color: 0xffffff } );
                 var blankSlide = new THREE.Mesh( slide, blankSlideBackground );
                 blankSlide.position.set( -500, 50, 400 );
