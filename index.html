@@ -504,7 +504,7 @@
 				// photo 1
 
 				const photo1Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
-				const photo1Map = new THREE.TextureLoader().load( 'images/photos/photo1.png' );
+				const photo1Map = new THREE.TextureLoader().load( 'images/photos/photo1.PNG' );
                 const photo1Photo = new THREE.MeshBasicMaterial( {map: photo1Map, color: 0xffffff } );
                 const Photo1 = new THREE.Mesh( viewer, photo1Photo );
                 Photo1.rotateY(90*(Math.PI/180));
@@ -519,7 +519,7 @@
 				// photo 2
 
 				const photo2Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
-				const photo2Map = new THREE.TextureLoader().load( 'images/photos/photo2.png' );
+				const photo2Map = new THREE.TextureLoader().load( 'images/photos/photo2.PNG' );
                 const photo2Photo = new THREE.MeshBasicMaterial( {map: photo2Map, color: 0xffffff } );
                 const Photo2 = new THREE.Mesh( viewer, photo2Photo );
                 Photo2.rotateY(90*(Math.PI/180));
@@ -534,7 +534,7 @@
 				// photo 3
 
 				const photo3Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
-				const photo3Map = new THREE.TextureLoader().load( 'images/photos/photo3.png' );
+				const photo3Map = new THREE.TextureLoader().load( 'images/photos/photo3.PNG' );
                 const photo3Photo = new THREE.MeshBasicMaterial( {map: photo3Map, color: 0xffffff } );
                 const Photo3 = new THREE.Mesh( viewer, photo3Photo );
                 Photo3.rotateY(90*(Math.PI/180));
@@ -549,7 +549,7 @@
 				// photo 4
 
 				const photo4Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
-				const photo4Map = new THREE.TextureLoader().load( 'images/photos/photo4.png' );
+				const photo4Map = new THREE.TextureLoader().load( 'images/photos/photo4.PNG' );
                 const photo4Photo = new THREE.MeshBasicMaterial( {map: photo4Map, color: 0xffffff } );
                 const Photo4 = new THREE.Mesh( viewer, photo4Photo );
                 Photo4.rotateY(90*(Math.PI/180));
@@ -617,7 +617,7 @@
                 const video4Video = new THREE.MeshBasicMaterial( {map: video4Texture, color: 0xffffff } );
                 const Video4 = new THREE.Mesh( viewer, video4Video );
 				Video4.name = "video4";
-				console.log(Video4.name);
+				// console.log(Video4.name);
                 Video4.rotateY(90*(Math.PI/180));
                 video4Edge.rotateY(90*(Math.PI/180));
                 Video4.rotateX(-35*(Math.PI/180));
@@ -663,7 +663,7 @@
 
 				raycaster.setFromCamera( pointer, camera );
                 var intersects = raycaster.intersectObjects( videos );
-				console.log(pointer.x, pointer.y);
+				// console.log(pointer.x, pointer.y);
 				// console.log(videos);
 				for(let i = 0; i < intersects.length; i++) {
 					// console.log(intersects[i].object.name);
