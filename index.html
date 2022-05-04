@@ -100,18 +100,12 @@
 
 				controls.maxPolarAngle = Math.PI / 2;
 
-                // video testing
+                // video elements
+
                 video1 = document.getElementById( 'video1' );
 				video2 = document.getElementById( 'video2' );
 				video3 = document.getElementById( 'video3' );
 				video4 = document.getElementById( 'video4' );
-                // video1.play();
-				// video2.play();
-				// video3.play();
-				// video4.play();
-                // window.addEventListener( 'onload', function() {
-                //     video.play();
-                // });
 
                 var video1Texture = new THREE.VideoTexture( video1 );
 				var video2Texture = new THREE.VideoTexture( video2 );
@@ -122,10 +116,10 @@
 
 				const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 				geometry.translate( 0, 0.5, 0 );
-				const cyan = new THREE.MeshPhongMaterial( { color: 0x00feef, flatShading: true } );
-                const magenta = new THREE.MeshPhongMaterial( { color: 0xff10f0, flatShading: true } );
+				const cyan = new THREE.MeshPhongMaterial( { color: 0xB0F5EC, flatShading: true } );
+                const magenta = new THREE.MeshPhongMaterial( { color: 0xCC5599, flatShading: true } );
 
-				for ( let i = 0; i < 400; i ++ ) {
+				for ( let i = 0; i < 125; i ++ ) {
                     if (i % 5 == 0) {
                         var mesh = new THREE.Mesh( geometry, magenta );
                     } else {
@@ -157,10 +151,10 @@
                 const titleSlide = new THREE.Mesh( slide, slide1Text );
                 titleSlide.rotateY(90*(Math.PI/180));
                 titleEdge.rotateY(90*(Math.PI/180));
-                titleSlide.rotateX(-70*(Math.PI/180));
-                titleEdge.rotateX(-70*(Math.PI/180));
-                titleSlide.position.set( 100, 50, -50 );
-                titleEdge.position.set( 100, 50, -50 );
+                titleSlide.rotateX(-40*(Math.PI/180));
+                titleEdge.rotateX(-40*(Math.PI/180));
+                titleSlide.position.set( -700, 70, 500 );
+                titleEdge.position.set( -700, 70, 500 );
                 scene.add(titleSlide);
                 scene.add(titleEdge);
 
@@ -170,63 +164,417 @@
                 const agendaMap = new THREE.TextureLoader().load( 'images/slide-maps/agenda.png' );
                 var blankSlideBackground = new THREE.MeshBasicMaterial( {map: agendaMap, color: 0xffffff } );
                 var blankSlide = new THREE.Mesh( slide, blankSlideBackground );
-                blankSlide.position.set( -500, 50, 400 );
-                agendaEdge.position.set( -500, 50, 400 );
+                blankSlide.position.set( -700, 70, 270 );
+                agendaEdge.position.set( -700, 70, 270 );
                 blankSlide.rotateY(90*(Math.PI/180));
                 agendaEdge.rotateY(90*(Math.PI/180));
-                blankSlide.rotateX(-70*(Math.PI/180));
-                agendaEdge.rotateX(-70*(Math.PI/180));
+                blankSlide.rotateX(-40*(Math.PI/180));
+                agendaEdge.rotateX(-40*(Math.PI/180));
                 scene.add(blankSlide);
                 scene.add(agendaEdge);
-                
-                // slides 1-4
-                // var texture = new THREE.VideoTexture( video );
-                // 1
-                var slide1Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
-                // const slide1Map = new THREE.TextureLoader().load( '' );
-                var slide1Background = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-                var slide1 = new THREE.Mesh( slide, slide1Background );
-                slide1.position.set( -500, 50, 180 );
-                slide1Edge.position.set( -500, 50, 180 );
-                slide1.rotateY(90*(Math.PI/180));
-                slide1Edge.rotateY(90*(Math.PI/180));
-                slide1.rotateX(-70*(Math.PI/180));
-                slide1Edge.rotateX(-70*(Math.PI/180));
-                scene.add(slide1);
-                scene.add(slide1Edge);
 
-                // 2
-                var slide2Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
-                // const slide2Map = new THREE.TextureLoader().load( '' );
-                var slide2Background = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-                var slide2 = new THREE.Mesh( slide, slide2Background );
                 // 3
                 var slide3Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
-                // const slide3Map = new THREE.TextureLoader().load( '' );
-                var slide3Background = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                const slide3Map = new THREE.TextureLoader().load( 'images/slide-maps/slide3.png' );
+                var slide3Background = new THREE.MeshBasicMaterial( { map: slide3Map, color: 0xffffff } );
                 var slide3 = new THREE.Mesh( slide, slide3Background );
+                slide3.position.set( -700, 70, 40 );
+                slide3Edge.position.set( -700, 70, 40 );
+                slide3.rotateY(90*(Math.PI/180));
+                slide3Edge.rotateY(90*(Math.PI/180));
+                slide3.rotateX(-40*(Math.PI/180));
+                slide3Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide3);
+                scene.add(slide3Edge);
+
                 // 4
                 var slide4Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
-                // const slide4Map = new THREE.TextureLoader().load( '' );
-                var slide4Background = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+                const slide4Map = new THREE.TextureLoader().load( 'images/slide-maps/slide4.png' );
+                var slide4Background = new THREE.MeshBasicMaterial( { map: slide4Map, color: 0xffffff } );
                 var slide4 = new THREE.Mesh( slide, slide4Background );
+                slide4.position.set( -700, 70, -190 );
+                slide4Edge.position.set( -700, 70, -190 );
+                slide4.rotateY(90*(Math.PI/180));
+                slide4Edge.rotateY(90*(Math.PI/180));
+                slide4.rotateX(-40*(Math.PI/180));
+                slide4Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide4);
+                scene.add(slide4Edge);
 
-				// videos
+                // 5
+                var slide5Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide5Map = new THREE.TextureLoader().load( 'images/slide-maps/slide5.png' );
+                var slide5Background = new THREE.MeshBasicMaterial( { map: slide5Map, color: 0xffffff } );
+                var slide5 = new THREE.Mesh( slide, slide5Background );
+                slide5.position.set( -700, 70, -420 );
+                slide5Edge.position.set( -700, 70, -420 );
+                slide5.rotateY(90*(Math.PI/180));
+                slide5Edge.rotateY(90*(Math.PI/180));
+                slide5.rotateX(-40*(Math.PI/180));
+                slide5Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide5);
+                scene.add(slide5Edge);
 
+                // 6
+                var slide6Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide6Map = new THREE.TextureLoader().load( 'images/slide-maps/slide6.png' );
+                var slide6Background = new THREE.MeshBasicMaterial( { map: slide6Map, color: 0xffffff } );
+                var slide6 = new THREE.Mesh( slide, slide6Background );
+                slide6.position.set( -400, 70, -420 );
+                slide6Edge.position.set( -400, 70, -420 );
+                slide6.rotateY(90*(Math.PI/180));
+                slide6Edge.rotateY(90*(Math.PI/180));
+                slide6.rotateX(-40*(Math.PI/180));
+                slide6Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide6);
+                scene.add(slide6Edge);
+
+				// 7
+				var slide7Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide7Map = new THREE.TextureLoader().load( 'images/slide-maps/slide7.png' );
+                var slide7Background = new THREE.MeshBasicMaterial( { map: slide7Map, color: 0xffffff } );
+                var slide7 = new THREE.Mesh( slide, slide7Background );
+                slide7.position.set( -400, 70, -190 );
+                slide7Edge.position.set( -400, 70, -190 );
+                slide7.rotateY(90*(Math.PI/180));
+                slide7Edge.rotateY(90*(Math.PI/180));
+                slide7.rotateX(-40*(Math.PI/180));
+                slide7Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide7);
+                scene.add(slide7Edge);
+
+				// 8
+				var slide8Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide8Map = new THREE.TextureLoader().load( 'images/slide-maps/slide8.png' );
+                var slide8Background = new THREE.MeshBasicMaterial( { map: slide8Map, color: 0xffffff } );
+                var slide8 = new THREE.Mesh( slide, slide8Background );
+                slide8.position.set( -400, 70, 40 );
+                slide8Edge.position.set( -400, 70, 40 );
+                slide8.rotateY(90*(Math.PI/180));
+                slide8Edge.rotateY(90*(Math.PI/180));
+                slide8.rotateX(-40*(Math.PI/180));
+                slide8Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide8);
+                scene.add(slide8Edge);
+
+				// 9
+				var slide9Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide9Map = new THREE.TextureLoader().load( 'images/slide-maps/slide9.png' );
+                var slide9Background = new THREE.MeshBasicMaterial( { map: slide9Map, color: 0xffffff } );
+                var slide9 = new THREE.Mesh( slide, slide9Background );
+                slide9.position.set( -400, 70, 270 );
+                slide9Edge.position.set( -400, 70, 270 );
+                slide9.rotateY(90*(Math.PI/180));
+                slide9Edge.rotateY(90*(Math.PI/180));
+                slide9.rotateX(-40*(Math.PI/180));
+                slide9Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide9);
+                scene.add(slide9Edge);
+
+				// 10
+				var slide10Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide10Map = new THREE.TextureLoader().load( 'images/slide-maps/slide10.png' );
+                var slide10Background = new THREE.MeshBasicMaterial( { map: slide10Map, color: 0xffffff } );
+                var slide10 = new THREE.Mesh( slide, slide10Background );
+                slide10.position.set( -400, 70, 500 );
+                slide10Edge.position.set( -400, 70, 500 );
+                slide10.rotateY(90*(Math.PI/180));
+                slide10Edge.rotateY(90*(Math.PI/180));
+                slide10.rotateX(-40*(Math.PI/180));
+                slide10Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide10);
+                scene.add(slide10Edge);
+
+				// 11
+				var slide11Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide11Map = new THREE.TextureLoader().load( 'images/slide-maps/slide11.png' );
+                var slide11Background = new THREE.MeshBasicMaterial( { map: slide11Map, color: 0xffffff } );
+                var slide11 = new THREE.Mesh( slide, slide11Background );
+                slide11.position.set( -100, 70, 500 );
+                slide11Edge.position.set( -100, 70, 500 );
+                slide11.rotateY(90*(Math.PI/180));
+                slide11Edge.rotateY(90*(Math.PI/180));
+                slide11.rotateX(-40*(Math.PI/180));
+                slide11Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide11);
+                scene.add(slide11Edge);
+
+				// 12
+				var slide12Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide12Map = new THREE.TextureLoader().load( 'images/slide-maps/slide12.png' );
+                var slide12Background = new THREE.MeshBasicMaterial( { map: slide12Map, color: 0xffffff } );
+                var slide12 = new THREE.Mesh( slide, slide12Background );
+                slide12.position.set( -100, 70, 270 );
+                slide12Edge.position.set( -100, 70, 270 );
+                slide12.rotateY(90*(Math.PI/180));
+                slide12Edge.rotateY(90*(Math.PI/180));
+                slide12.rotateX(-40*(Math.PI/180));
+                slide12Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide12);
+                scene.add(slide12Edge);
+
+				// 13
+				var slide13Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide13Map = new THREE.TextureLoader().load( 'images/slide-maps/slide13.png' );
+                var slide13Background = new THREE.MeshBasicMaterial( { map: slide13Map, color: 0xffffff } );
+                var slide13= new THREE.Mesh( slide, slide13Background );
+                slide13.position.set( -100, 70, 40 );
+                slide13Edge.position.set( -100, 70, 40 );
+                slide13.rotateY(90*(Math.PI/180));
+                slide13Edge.rotateY(90*(Math.PI/180));
+                slide13.rotateX(-40*(Math.PI/180));
+                slide13Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide13);
+                scene.add(slide13Edge);
+
+				// 14
+				var slide14Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide14Map = new THREE.TextureLoader().load( 'images/slide-maps/slide14.png' );
+                var slide14Background = new THREE.MeshBasicMaterial( { map: slide14Map, color: 0xffffff } );
+                var slide14 = new THREE.Mesh( slide, slide14Background );
+                slide14.position.set( -100, 70, -190 );
+                slide14Edge.position.set( -100, 70, -190 );
+                slide14.rotateY(90*(Math.PI/180));
+                slide14Edge.rotateY(90*(Math.PI/180));
+                slide14.rotateX(-40*(Math.PI/180));
+                slide14Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide14);
+                scene.add(slide14Edge);
+
+				// 15
+				var slide15Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide15Map = new THREE.TextureLoader().load( 'images/slide-maps/slide15.png' );
+                var slide15Background = new THREE.MeshBasicMaterial( { map: slide15Map, color: 0xffffff } );
+                var slide15 = new THREE.Mesh( slide, slide15Background );
+                slide15.position.set( -100, 70, -420 );
+                slide15Edge.position.set( -100, 70, -420 );
+                slide15.rotateY(90*(Math.PI/180));
+                slide15Edge.rotateY(90*(Math.PI/180));
+                slide15.rotateX(-40*(Math.PI/180));
+                slide15Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide15);
+                scene.add(slide15Edge);
+
+				// 16
+				var slide16Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide16Map = new THREE.TextureLoader().load( 'images/slide-maps/slide16.png' );
+                var slide16Background = new THREE.MeshBasicMaterial( { map: slide16Map, color: 0xffffff } );
+                var slide16 = new THREE.Mesh( slide, slide16Background );
+                slide16.position.set( 200, 70, -420 );
+                slide16Edge.position.set( 200, 70, -420 );
+                slide16.rotateY(90*(Math.PI/180));
+                slide16Edge.rotateY(90*(Math.PI/180));
+                slide16.rotateX(-40*(Math.PI/180));
+                slide16Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide16);
+                scene.add(slide16Edge);
+
+				// 17
+				var slide17Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide17Map = new THREE.TextureLoader().load( 'images/slide-maps/slide17.png' );
+                var slide17Background = new THREE.MeshBasicMaterial( { map: slide17Map, color: 0xffffff } );
+                var slide17 = new THREE.Mesh( slide, slide17Background );
+                slide17.position.set( 200, 70, -190 );
+                slide17Edge.position.set( 200, 70, -190 );
+                slide17.rotateY(90*(Math.PI/180));
+                slide17Edge.rotateY(90*(Math.PI/180));
+                slide17.rotateX(-40*(Math.PI/180));
+                slide17Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide17);
+                scene.add(slide17Edge);
+
+				// 18
+				var slide18Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide18Map = new THREE.TextureLoader().load( 'images/slide-maps/slide18.png' );
+                var slide18Background = new THREE.MeshBasicMaterial( { map: slide18Map, color: 0xffffff } );
+                var slide18 = new THREE.Mesh( slide, slide18Background );
+                slide18.position.set( 200, 70, 40 );
+                slide18Edge.position.set( 200, 70, 40 );
+                slide18.rotateY(90*(Math.PI/180));
+                slide18Edge.rotateY(90*(Math.PI/180));
+                slide18.rotateX(-40*(Math.PI/180));
+                slide18Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide18);
+                scene.add(slide18Edge);
+
+				// 19
+				var slide19Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide19Map = new THREE.TextureLoader().load( 'images/slide-maps/slide19.png' );
+                var slide19Background = new THREE.MeshBasicMaterial( { map: slide19Map, color: 0xffffff } );
+                var slide19 = new THREE.Mesh( slide, slide19Background );
+                slide19.position.set( 200, 70, 270 );
+                slide19Edge.position.set( 200, 70, 270 );
+                slide19.rotateY(90*(Math.PI/180));
+                slide19Edge.rotateY(90*(Math.PI/180));
+                slide19.rotateX(-40*(Math.PI/180));
+                slide19Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide19);
+                scene.add(slide19Edge);
+
+				// 20
+				var slide20Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide20Map = new THREE.TextureLoader().load( 'images/slide-maps/slide20.png' );
+                var slide20Background = new THREE.MeshBasicMaterial( { map: slide20Map, color: 0xffffff } );
+                var slide20 = new THREE.Mesh( slide, slide20Background );
+                slide20.position.set( 200, 70, 500 );
+                slide20Edge.position.set( 200, 70, 500 );
+                slide20.rotateY(90*(Math.PI/180));
+                slide20Edge.rotateY(90*(Math.PI/180));
+                slide20.rotateX(-40*(Math.PI/180));
+                slide20Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide20);
+                scene.add(slide20Edge);
+
+				// 21
+				var slide21Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide21Map = new THREE.TextureLoader().load( 'images/slide-maps/slide21.png' );
+                var slide21Background = new THREE.MeshBasicMaterial( { map: slide21Map, color: 0xffffff } );
+                var slide21 = new THREE.Mesh( slide, slide21Background );
+                slide21.position.set( 500, 70, 500 );
+                slide21Edge.position.set( 500, 70, 500 );
+                slide21.rotateY(90*(Math.PI/180));
+                slide21Edge.rotateY(90*(Math.PI/180));
+                slide21.rotateX(-40*(Math.PI/180));
+                slide21Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide21);
+                scene.add(slide21Edge);
+
+				// 22
+				var slide22Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide22Map = new THREE.TextureLoader().load( 'images/slide-maps/slide22.png' );
+                var slide22Background = new THREE.MeshBasicMaterial( { map: slide22Map, color: 0xffffff } );
+                var slide22 = new THREE.Mesh( slide, slide22Background );
+                slide22.position.set( 500, 70, 270 );
+                slide22Edge.position.set( 500, 70, 270 );
+                slide22.rotateY(90*(Math.PI/180));
+                slide22Edge.rotateY(90*(Math.PI/180));
+                slide22.rotateX(-40*(Math.PI/180));
+                slide22Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide22);
+                scene.add(slide22Edge);
+
+				// 23
+				var slide23Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide23Map = new THREE.TextureLoader().load( 'images/slide-maps/slide23.png' );
+                var slide23Background = new THREE.MeshBasicMaterial( { map: slide23Map, color: 0xffffff } );
+                var slide23 = new THREE.Mesh( slide, slide23Background );
+                slide23.position.set( 500, 70, 40 );
+                slide23Edge.position.set( 500, 70, 40 );
+                slide23.rotateY(90*(Math.PI/180));
+                slide23Edge.rotateY(90*(Math.PI/180));
+                slide23.rotateX(-40*(Math.PI/180));
+                slide23Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide23);
+                scene.add(slide23Edge);
+
+				// media view frame and edges
 				const viewer = new THREE.PlaneGeometry( 50, 108.5 );
 				const viewerEdges = new THREE.EdgesGeometry( viewer );
+
+				// 24
+				var slide24Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide24Map = new THREE.TextureLoader().load( 'images/slide-maps/slide24.png' );
+                var slide24Background = new THREE.MeshBasicMaterial( { map: slide24Map, color: 0xffffff } );
+                var slide24 = new THREE.Mesh( slide, slide24Background );
+                slide24.position.set( 800, 70, 500 );
+                slide24Edge.position.set( 800, 70, 500 );
+                slide24.rotateY(90*(Math.PI/180));
+                slide24Edge.rotateY(90*(Math.PI/180));
+                slide24.rotateX(-40*(Math.PI/180));
+                slide24Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide24);
+                scene.add(slide24Edge);
+
+				// 25
+				var slide25Edge = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x222222 } ) );
+                const slide25Map = new THREE.TextureLoader().load( 'images/slide-maps/slide25.png' );
+                var slide25Background = new THREE.MeshBasicMaterial( { map: slide25Map, color: 0xffffff } );
+                var slide25 = new THREE.Mesh( slide, slide25Background );
+                slide25.position.set( 800, 70, 270 );
+                slide25Edge.position.set( 800, 70, 270 );
+                slide25.rotateY(90*(Math.PI/180));
+                slide25Edge.rotateY(90*(Math.PI/180));
+                slide25.rotateX(-40*(Math.PI/180));
+                slide25Edge.rotateX(-40*(Math.PI/180));
+                scene.add(slide25);
+                scene.add(slide25Edge);
+
+				// photos
+
+				// photo 1
+
+				const photo1Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
+				const photo1Map = new THREE.TextureLoader().load( 'images/photos/photo1.png' );
+                const photo1Photo = new THREE.MeshBasicMaterial( {map: photo1Map, color: 0xffffff } );
+                const Photo1 = new THREE.Mesh( viewer, photo1Photo );
+                Photo1.rotateY(90*(Math.PI/180));
+                photo1Edge.rotateY(90*(Math.PI/180));
+                Photo1.rotateX(-35*(Math.PI/180));
+                photo1Edge.rotateX(-35*(Math.PI/180));
+                Photo1.position.set( 800, 70, 30 );
+                photo1Edge.position.set( 800, 70, 30 );
+                scene.add(Photo1);
+                scene.add(photo1Edge);
+
+				// photo 2
+
+				const photo2Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
+				const photo2Map = new THREE.TextureLoader().load( 'images/photos/photo2.png' );
+                const photo2Photo = new THREE.MeshBasicMaterial( {map: photo2Map, color: 0xffffff } );
+                const Photo2 = new THREE.Mesh( viewer, photo2Photo );
+                Photo2.rotateY(90*(Math.PI/180));
+                photo2Edge.rotateY(90*(Math.PI/180));
+                Photo2.rotateX(-35*(Math.PI/180));
+                photo2Edge.rotateX(-35*(Math.PI/180));
+                Photo2.position.set( 800, 70, -40 );
+                photo2Edge.position.set( 800, 70, -40 );
+                scene.add(Photo2);
+                scene.add(photo2Edge);
+
+				// photo 3
+
+				const photo3Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
+				const photo3Map = new THREE.TextureLoader().load( 'images/photos/photo3.png' );
+                const photo3Photo = new THREE.MeshBasicMaterial( {map: photo3Map, color: 0xffffff } );
+                const Photo3 = new THREE.Mesh( viewer, photo3Photo );
+                Photo3.rotateY(90*(Math.PI/180));
+                photo3Edge.rotateY(90*(Math.PI/180));
+                Photo3.rotateX(-35*(Math.PI/180));
+                photo3Edge.rotateX(-35*(Math.PI/180));
+                Photo3.position.set( 800, 70, -110 );
+                photo3Edge.position.set( 800, 70, -110 );
+                scene.add(Photo3);
+                scene.add(photo3Edge);
+
+				// photo 4
+
+				const photo4Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
+				const photo4Map = new THREE.TextureLoader().load( 'images/photos/photo4.png' );
+                const photo4Photo = new THREE.MeshBasicMaterial( {map: photo4Map, color: 0xffffff } );
+                const Photo4 = new THREE.Mesh( viewer, photo4Photo );
+                Photo4.rotateY(90*(Math.PI/180));
+                photo4Edge.rotateY(90*(Math.PI/180));
+                Photo4.rotateX(-35*(Math.PI/180));
+                photo4Edge.rotateX(-35*(Math.PI/180));
+                Photo4.position.set( 800, 70, -180 );
+                photo4Edge.position.set( 800, 70, -180 );
+                scene.add(Photo4);
+                scene.add(photo4Edge);
+
+				// videos
 
 				// video 1
 
 				const video1Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
                 const video1Video = new THREE.MeshBasicMaterial( {map: video1Texture, color: 0xffffff } );
                 const Video1 = new THREE.Mesh( viewer, video1Video );
+				Video1.name = "video1";
                 Video1.rotateY(90*(Math.PI/180));
                 video1Edge.rotateY(90*(Math.PI/180));
-                Video1.rotateX(-45*(Math.PI/180));
-                video1Edge.rotateX(-45*(Math.PI/180));
-                Video1.position.set( 600, 50, -50 );
-                video1Edge.position.set( 600, 50, -50 );
+                Video1.rotateX(-35*(Math.PI/180));
+                video1Edge.rotateX(-35*(Math.PI/180));
+                Video1.position.set( 700, 70, -300 );
+                video1Edge.position.set( 700, 70, -300 );
 				videoGroup.add(Video1);
                 // scene.add(Video1);
                 scene.add(video1Edge);
@@ -236,12 +584,13 @@
 				const video2Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
                 const video2Video = new THREE.MeshBasicMaterial( {map: video2Texture, color: 0xffffff } );
                 const Video2 = new THREE.Mesh( viewer, video2Video );
+				Video2.name = "video2";
                 Video2.rotateY(90*(Math.PI/180));
                 video2Edge.rotateY(90*(Math.PI/180));
-                Video2.rotateX(-45*(Math.PI/180));
-                video2Edge.rotateX(-45*(Math.PI/180));
-                Video2.position.set( 600, 50, -120 );
-                video2Edge.position.set( 600, 50, -120 );
+                Video2.rotateX(-35*(Math.PI/180));
+                video2Edge.rotateX(-35*(Math.PI/180));
+                Video2.position.set( 700, 70, -370 );
+                video2Edge.position.set( 700, 70, -370 );
 				videoGroup.add(Video2);
                 // scene.add(Video2);
                 scene.add(video2Edge);
@@ -251,12 +600,13 @@
 				const video3Edge = new THREE.LineSegments( viewerEdges, new THREE.LineBasicMaterial( { color: 0xfff6f6 } ) );
                 const video3Video = new THREE.MeshBasicMaterial( {map: video3Texture, color: 0xffffff } );
                 const Video3 = new THREE.Mesh( viewer, video3Video );
+				Video3.name = "video3";
                 Video3.rotateY(90*(Math.PI/180));
                 video3Edge.rotateY(90*(Math.PI/180));
-                Video3.rotateX(-45*(Math.PI/180));
-                video3Edge.rotateX(-45*(Math.PI/180));
-                Video3.position.set( 600, 50, -190 );
-                video3Edge.position.set( 600, 50, -190 );
+                Video3.rotateX(-35*(Math.PI/180));
+                video3Edge.rotateX(-35*(Math.PI/180));
+                Video3.position.set( 700, 70, -440 );
+                video3Edge.position.set( 700, 70, -440 );
 				videoGroup.add(Video3);
                 // scene.add(Video3);
                 scene.add(video3Edge);
@@ -270,10 +620,10 @@
 				console.log(Video4.name);
                 Video4.rotateY(90*(Math.PI/180));
                 video4Edge.rotateY(90*(Math.PI/180));
-                Video4.rotateX(-45*(Math.PI/180));
-                video4Edge.rotateX(-45*(Math.PI/180));
-                Video4.position.set( 600, 50, -260 );
-                video4Edge.position.set( 600, 50, -260 );
+                Video4.rotateX(-35*(Math.PI/180));
+                video4Edge.rotateX(-35*(Math.PI/180));
+                Video4.position.set( 700, 70, -510 );
+                video4Edge.position.set( 700, 70, -510 );
 				videoGroup.add(Video4);
                 // scene.add(Video4);
                 scene.add(video4Edge);
@@ -318,7 +668,26 @@
 				for(let i = 0; i < intersects.length; i++) {
 					// console.log(intersects[i].object.name);
 					videoName = intersects[i].object.name;
-					video4.play();
+					
+					switch (videoName) {
+						case 'video1':
+							video1.paused ? video1.play() : video1.pause();
+							break;
+						case 'video2':
+							 video2.paused ? video2.play() : video2.pause();
+							 break;
+						case 'video3':
+							video3.paused ? video3.play() : video3.pause();
+							break;
+						case 'video4':
+							video4.paused ? video4.play() : video4.pause();
+							break;
+						default:
+							video1.pause();
+							video2.pause();
+							video3.pause();
+							video4.pause();
+					}
 				}
 			}
 
